@@ -18,6 +18,10 @@ public class JpaMain {
             Member member = em.find(Member.class, 1L);
             System.out.println("member.getId(): " + member.getId());
             System.out.println("member.getName(): " + member.getName());
+
+            em.remove(member);
+
+            tx.commit();
         }catch (Exception e){
             tx.rollback();
         }finally {
