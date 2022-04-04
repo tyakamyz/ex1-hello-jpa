@@ -15,11 +15,10 @@ public class JpaMain {
         tx.begin();
 
         try{
-            Member member = em.find(Member.class, 1L);
+            Member member = em.find(Member.class, 2L);
             System.out.println("member.getId(): " + member.getId());
             System.out.println("member.getName(): " + member.getName());
-
-            em.remove(member);
+            member.setName("HelloJpa");
 
             tx.commit();
         }catch (Exception e){
