@@ -16,13 +16,16 @@ public class JpaMain {
 
         try{
             /* 비영속: JPA와 연관이 없는 상태 */
-            Member member = new Member();
-            member.setId(4L);
-            member.setName("testMan1");
+            Member member = new Member(5L,"testMan3");
 
             /* 영속: JPA와 영속 상태 */
             em.persist(member);
             /* commit 전까진 DB에 넣지않음 */
+
+            /* 수정도 마찬가지 */
+            Member member2 = em.find(Member.class, 3L);
+            member2.setName("testMan2");
+
             tx.commit();
 
         }catch (Exception e){
