@@ -4,7 +4,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import java.util.List;
 
 public class JpaMain {
     public static void main(String[] args) {
@@ -16,11 +15,15 @@ public class JpaMain {
         tx.begin();
 
         try{
-            List<Member> members = em.createQuery("select m from Member m", Member.class).getResultList();
+            /* 비영속: JPA와 연관이 없는 상태 */
+            Member member = new Member();
+            member.setId(4L);
+            member.setName("testMan1");
 
-            for (Member member : members) {
-                System.out.println("member.getName() = " + member.getName());
-            }
+            /* 영속: JPA와 영속 상태 */
+            em.persist(member);
+            /* commit 전까진 DB에 넣지않음 */
+            tx.commit();
 
         }catch (Exception e){
             tx.rollback();
