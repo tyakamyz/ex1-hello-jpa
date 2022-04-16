@@ -16,19 +16,16 @@ public class JpaMain {
 
         try{
             /* 비영속: JPA와 연관이 없는 상태 */
-            //Member member = new Member(6L,"testMan4");
+            Member member = new Member(77L,"7777");
 
             /* 영속: JPA와 영속 상태 */
-            //em.persist(member);
-            /* commit 전까진 DB에 넣지않음 */
-
-            /* flush 강제 호출 */
-            // em.flush();
+            em.persist(member);
 
             /* 준영속 상태 테스트 */
             Member member2 = em.find(Member.class, 3L);
-            em.detach(member2);
             member2.setName("ZZZZZZ");
+
+            em.clear();
 
             System.out.println("===============");
 
