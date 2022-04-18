@@ -17,7 +17,11 @@ public class JpaMain {
         try{
             Member mebMember = new Member();
             mebMember.setUsername("TestMan");
+
+            System.out.println("==============");
             em.persist(mebMember);
+            System.out.println(mebMember.getId());
+            System.out.println("==============");
 
             tx.commit();
 
