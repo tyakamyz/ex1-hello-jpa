@@ -15,6 +15,10 @@ public class JpaMain {
         tx.begin();
 
         try{
+            Member mebMember = new Member();
+            mebMember.setUsername("TestMan");
+            em.persist(mebMember);
+
             tx.commit();
 
         }catch (Exception e){
