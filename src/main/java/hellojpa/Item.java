@@ -4,8 +4,8 @@ import javax.persistence.*;
 
 @Entity
 @DiscriminatorColumn
-@Inheritance(strategy = InheritanceType.JOINED)
-public class Item {
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+public abstract class Item {
     @Id @GeneratedValue
     private long id;
 
