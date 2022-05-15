@@ -15,7 +15,14 @@ public class JpaMain {
         tx.begin();
 
         try{
+            Movie movie = new Movie();
+            movie.setName("해리포터");
+            movie.setPrice(100000);
+            movie.setActor("해리");
+            movie.setDirector("감독");
 
+            em.persist(movie);
+            tx.commit();
 
         }catch (Exception e){
             tx.rollback();
