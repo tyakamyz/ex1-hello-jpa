@@ -15,15 +15,7 @@ public class JpaMain {
         tx.begin();
 
         try{
-            Member mebMember = new Member();
-            mebMember.setUsername("TestMan");
 
-            System.out.println("==============");
-            em.persist(mebMember);
-            System.out.println(mebMember.getId());
-            System.out.println("==============");
-
-            tx.commit();
 
         }catch (Exception e){
             tx.rollback();
