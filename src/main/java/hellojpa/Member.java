@@ -16,6 +16,10 @@ public class Member extends BaseEntity{
     @Column(name = "name", nullable = false, length = 100)
     private String username;
 
+    @ManyToOne
+    @JoinColumn(name = "TEAM_ID")
+    private Team team;
+
     public Member(){
 
     }
@@ -34,5 +38,13 @@ public class Member extends BaseEntity{
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
+    }
+
+    public Team getTeam() {
+        return team;
     }
 }
